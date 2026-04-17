@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ketchup is an open-source Tauri and React Pomodoro timer with a flexible dual-budget work and break cycle."
+    />
+    <meta name="author" content="Ketchup contributors" />
+    <meta
+      name="keywords"
+      content="Ketchup, Pomodoro timer, Tauri timer, React timer, open source productivity app, desktop timer"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content="Ketchup" />
+    <meta name="theme-color" content="#fff7ed" />
+    <link rel="canonical" href="https://rench321.github.io/ketchup-timer/" />
+    <meta property="og:title" content="Ketchup - Flexible Pomodoro Timer" />
+    <meta
+      property="og:description"
+      content="A compact open-source desktop timer where work and break time share one flexible cycle."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rench321.github.io/ketchup-timer/" />
+    <meta property="og:site_name" content="Ketchup" />
+    <meta property="og:image" content="https://rench321.github.io/ketchup-timer/assets/demo.gif" />
+    <meta
+      property="og:image:alt"
+      content="Animated preview of Ketchup's compact dual-ring Pomodoro timer interface."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ketchup - Flexible Pomodoro Timer" />
+    <meta
+      name="twitter:description"
+      content="Open-source Tauri and React Pomodoro timer with a flexible work and break budget."
+    />
+    <meta name="twitter:image" content="https://rench321.github.io/ketchup-timer/assets/demo.gif" />
+    <title>Ketchup - Flexible Pomodoro Timer</title>
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Ketchup",
+        "description": "An open-source desktop Pomodoro timer with flexible work and break switching inside one shared cycle.",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "softwareVersion": "0.1.0",
+        "license": "https://github.com/Rench321/ketchup-timer/blob/main/LICENSE",
+        "codeRepository": "https://github.com/Rench321/ketchup-timer",
+        "downloadUrl": "https://github.com/Rench321/ketchup-timer/releases",
+        "image": "https://rench321.github.io/ketchup-timer/assets/demo.gif",
+        "isAccessibleForFree": true,
+        "programmingLanguage": ["TypeScript", "Rust"],
+        "runtimePlatform": ["Tauri v2", "React 19"],
+        "keywords": "Pomodoro timer, desktop timer, Tauri, React, open source productivity app, flexible work break timer",
+        "featureList": [
+          "Flexible manual switching between work and break phases",
+          "Shared work and break budgets inside each cycle",
+          "Dual progress rings for active and remaining phase budgets",
+          "Local desktop app with minimal Rust backend",
+          "Web Audio phase-change tones without OS notification permissions"
+        ],
+        "sameAs": ["https://github.com/Rench321/ketchup-timer"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Ketchup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ketchup is an open-source desktop Pomodoro timer built with Tauri v2, React, and TypeScript."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Ketchup different from a normal Pomodoro timer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ketchup uses a dual-budget cycle: work and break time are both allocated for the cycle, and the user can switch between them at any moment while each phase spends down its own remaining budget."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which platforms does Ketchup support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ketchup publishes desktop releases for Windows, macOS, and Linux through GitHub Releases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Ketchup free and open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Ketchup is MIT licensed and its source code is available on GitHub."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Ketchup home">
+        <img src="./assets/icon.svg" width="36" height="36" alt="" />
+        <span>Ketchup</span>
+      </a>
+      <nav class="nav-links" aria-label="Project links">
+        <a href="#mechanic">Mechanic</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/Rench321/ketchup-timer">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <div class="budget-wall" aria-hidden="true">
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+            <span style="--i: 4"></span>
+            <span style="--i: 5"></span>
+            <span style="--i: 6"></span>
+          </div>
+          <img
+            class="product-shot"
+            src="./assets/demo.gif"
+            alt="Animated preview of Ketchup's compact dual-ring Pomodoro timer interface."
+            loading="eager"
+            decoding="async"
+          />
+          <div class="timer-orbit" aria-hidden="true">
+            <span class="timer-orbit__work"></span>
+            <span class="timer-orbit__break"></span>
+          </div>
+        </div>
+
+        <div class="hero__copy">
+          <p class="eyebrow">Open-source desktop timer for people who renegotiate time mid-session.</p>
+          <h1 id="hero-title">Ketchup</h1>
+          <p class="hero__lead">
+            A compact Pomodoro timer where work and break time share one cycle. Switch phases whenever
+            your brain needs it, without losing the budget.
+          </p>
+          <div class="hero__actions" aria-label="Primary actions">
+            <a class="button button--primary" href="https://github.com/Rench321/ketchup-timer/releases">
+              <span aria-hidden="true">DL</span>
+              Download
+            </a>
+            <a class="button button--quiet" href="https://github.com/Rench321/ketchup-timer">
+              <span aria-hidden="true">GH</span>
+              View source
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__ticker" aria-label="Project highlights">
+          <span>Dual-budget timer</span>
+          <span>Tauri v2</span>
+          <span>React 19</span>
+          <span>MIT licensed</span>
+        </div>
+      </section>
+
+      <section id="mechanic" class="mechanic section-band" aria-labelledby="mechanic-title">
+        <div class="section-copy">
+          <p class="section-kicker">The unusual bit</p>
+          <h2 id="mechanic-title">One cycle. Two budgets. No ceremony.</h2>
+        </div>
+        <div class="budget-board" aria-label="Dual-budget cycle diagram">
+          <div class="budget-track budget-track--work">
+            <span class="budget-track__label">Work budget</span>
+            <span class="budget-track__fill"></span>
+            <span class="budget-track__time">25 min</span>
+          </div>
+          <button class="phase-toggle" type="button" aria-label="Switch phase preview">
+            <span class="phase-toggle__line"></span>
+            <span class="phase-toggle__dot"></span>
+          </button>
+          <div class="budget-track budget-track--break">
+            <span class="budget-track__label">Break budget</span>
+            <span class="budget-track__fill"></span>
+            <span class="budget-track__time">5 min</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-labelledby="features-title">
+        <div class="section-copy">
+          <p class="section-kicker">Built like a tiny tool</p>
+          <h2 id="features-title">Everything stays local, focused, and easy to hack.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">SW</span>
+            <h3>Free phase switching</h3>
+            <p>Jump between work and break at any point while each side keeps its remaining budget.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">RG</span>
+            <h3>Dual progress rings</h3>
+            <p>The active phase and the waiting phase are visible together, so the cycle is always readable.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">AU</span>
+            <h3>No notification permissions</h3>
+            <p>Phase changes use Web Audio tones instead of OS notifications or background services.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">{ }</span>
+            <h3>Frontend-owned logic</h3>
+            <p>The timer state machine lives in React, keeping the Rust side intentionally minimal.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="answers section-band" aria-labelledby="answers-title">
+        <div class="section-copy">
+          <p class="section-kicker">Quick answers</p>
+          <h2 id="answers-title">Ketchup in plain facts.</h2>
+        </div>
+        <dl class="answer-list">
+          <div>
+            <dt>What is Ketchup?</dt>
+            <dd>An open-source desktop Pomodoro timer built with Tauri v2, React, and TypeScript.</dd>
+          </div>
+          <div>
+            <dt>What makes it different?</dt>
+            <dd>Each cycle has both a work budget and a break budget, and you can switch between them freely.</dd>
+          </div>
+          <div>
+            <dt>Where does the timer logic live?</dt>
+            <dd>The state machine, persistence, and UI live in the React frontend; Rust only hosts Tauri plugins.</dd>
+          </div>
+          <div>
+            <dt>How is it distributed?</dt>
+            <dd>Installers for Windows, macOS, and Linux are published through GitHub Releases.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="download" class="download section-band" aria-labelledby="download-title">
+        <div class="section-copy">
+          <p class="section-kicker">Get it or fork it</p>
+          <h2 id="download-title">Install Ketchup, study it, or reshape it into your own timer.</h2>
+        </div>
+        <div class="download-actions" aria-label="Download links">
+          <a class="download-link" href="https://github.com/Rench321/ketchup-timer/releases">
+            <span>Windows</span>
+            <strong>Releases</strong>
+          </a>
+          <a class="download-link" href="https://github.com/Rench321/ketchup-timer/releases">
+            <span>macOS</span>
+            <strong>Releases</strong>
+          </a>
+          <a class="download-link" href="https://github.com/Rench321/ketchup-timer/releases">
+            <span>Linux</span>
+            <strong>Releases</strong>
+          </a>
+          <a class="download-link download-link--source" href="https://github.com/Rench321/ketchup-timer">
+            <span>Source</span>
+            <strong>GitHub</strong>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Ketchup is MIT licensed.</span>
+      <span>Static site deploys to GitHub Pages with GitHub Actions.</span>
+    </footer>
+
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>

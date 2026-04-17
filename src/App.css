@@ -1,0 +1,99 @@
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #f8f9fa 0%, #e2e8f0 100%);
+}
+
+/* ── Ambient background glow ─────────────────────────────── */
+.app__bg-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: background 1s ease, opacity 1s ease;
+  filter: blur(80px);
+  opacity: 0.12;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.app--work .app__bg-glow {
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.6) 0%, transparent 70%);
+}
+
+.app--break .app__bg-glow {
+  background: radial-gradient(circle, rgba(42, 157, 143, 0.6) 0%, transparent 70%);
+}
+
+/* ── Content layout ──────────────────────────────────────── */
+.app__content {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 42px 22px 16px;
+  animation: fadeIn 0.4s ease;
+}
+
+.app__section {
+  width: 100%;
+}
+
+.app__section--config {
+  margin-bottom: 0;
+}
+
+.app__section--timer {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 4px;
+}
+
+.app__section--controls {
+  padding: 4px 0 0;
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+.app__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0 10px;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.app__footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.app__completed {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ── Loading ──────────────────────────────────────────────── */
+.app--loading {
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: pulse-glow 1s ease-in-out infinite;
+}

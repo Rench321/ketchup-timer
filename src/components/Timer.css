@@ -1,0 +1,147 @@
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0 4px;
+}
+
+/* ── Dynamic glow on container ──────────────────────────────── */
+.timer__ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer__svg {
+  transition: filter 0.5s ease;
+}
+
+.ring--work .timer__svg {
+  filter: drop-shadow(0 0 18px rgba(230, 57, 70, 0.35))
+          drop-shadow(0 0 40px rgba(230, 57, 70, 0.2));
+}
+
+.ring--break .timer__svg {
+  filter: drop-shadow(0 0 18px rgba(42, 157, 143, 0.35))
+          drop-shadow(0 0 40px rgba(42, 157, 143, 0.2));
+}
+
+/* ── Ring tracks ────────────────────────────────────────────── */
+.ring-track {
+  stroke: rgba(0, 0, 0, 0.08);
+}
+
+.ring-track--inner {
+  stroke: rgba(0, 0, 0, 0.04);
+}
+
+/* ── Ring progress ──────────────────────────────────────────── */
+.ring-progress {
+  transition: stroke-dashoffset 1s linear, stroke 0.5s ease;
+}
+
+.ring-progress--work {
+  stroke: var(--color-work);
+}
+
+.ring-progress--break {
+  stroke: var(--color-break);
+}
+
+.ring-progress--inner {
+  opacity: 0.45;
+}
+
+/* ── Center ─────────────────────────────────────────────────── */
+.timer__center {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.timer__phase-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color var(--transition-med);
+}
+
+.ring--work .timer__phase-label {
+  color: var(--color-work);
+}
+
+.ring--break .timer__phase-label {
+  color: var(--color-break);
+}
+
+.timer__time {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  transition: color var(--transition-slow);
+}
+
+.timer__time--running {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.timer__other-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.timer__other-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.label--work { color: var(--color-work); opacity: 0.7; }
+.label--break { color: var(--color-break); opacity: 0.7; }
+
+.timer__other-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Dots ───────────────────────────────────────────────────── */
+.timer__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.timer__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-med);
+}
+
+.timer__dot--filled {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+}
+
+.timer__dot--active {
+  background: transparent;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 8px rgba(123, 44, 191, 0.4);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,98 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 4px 0;
+}
+
+/* ── Base button ──────────────────────────────────────────── */
+.controls__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.controls__btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: white;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.controls__btn:hover::after { opacity: 0.07; }
+.controls__btn:active::after { opacity: 0.12; }
+.controls__btn:active { transform: scale(0.96); }
+
+/* ── Primary (Play/Pause) ─────────────────────────────────── */
+.controls__btn--primary {
+  width: 64px;
+  height: 64px;
+  background: var(--color-accent);
+  box-shadow:
+    0 0 20px rgba(123, 44, 191, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.controls__btn--primary:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 28px rgba(123, 44, 191, 0.55),
+    0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Icon (Reset) ─────────────────────────────────────────── */
+.controls__btn--icon {
+  width: 44px;
+  height: 44px;
+  background: var(--bg-glass);
+  border: 1.5px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.controls__btn--icon:hover {
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Switch ───────────────────────────────────────────────── */
+.controls__btn--switch {
+  height: 44px;
+  padding: 0 18px;
+  background: var(--bg-glass);
+  border: 1.5px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  gap: 8px;
+}
+
+.controls__btn--switch:hover {
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.controls__btn--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Switch icon layout ───────────────────────────────────── */
+.switch-icon {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.switch-icon__label {
+  font-size: 13px;
+  font-weight: 600;
+}

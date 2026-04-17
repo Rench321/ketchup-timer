@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rench321.github.io/ketchup-timer/sitemap.xml
+
+LLMS: https://rench321.github.io/ketchup-timer/llms.txt
