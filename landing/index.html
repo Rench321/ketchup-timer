@@ -14,7 +14,7 @@
     />
     <meta name="robots" content="index, follow" />
     <meta name="application-name" content="Ketchup" />
-    <meta name="theme-color" content="#fff7ed" />
+    <meta name="theme-color" content="#121116" />
     <link rel="canonical" href="https://rench321.github.io/ketchup-timer/" />
     <meta property="og:title" content="Ketchup - Flexible Pomodoro Timer" />
     <meta
@@ -38,6 +38,12 @@
     <meta name="twitter:image" content="https://rench321.github.io/ketchup-timer/assets/demo.gif" />
     <title>Ketchup - Flexible Pomodoro Timer</title>
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">
       {
@@ -125,8 +131,8 @@
 
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand" href="#top" aria-label="Ketchup home">
-        <img src="./assets/icon.svg" width="36" height="36" alt="" />
-        <span>Ketchup</span>
+        <img src="./assets/icon.svg" width="32" height="32" alt="" />
+        <span translate="no">Ketchup</span>
       </a>
       <nav class="nav-links" aria-label="Project links">
         <a href="#mechanic">Mechanic</a>
@@ -137,86 +143,86 @@
 
     <main id="main">
       <section id="top" class="hero" aria-labelledby="hero-title">
-        <div class="hero__media">
-          <div class="budget-wall" aria-hidden="true">
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-            <span style="--i: 4"></span>
-            <span style="--i: 5"></span>
-            <span style="--i: 6"></span>
-          </div>
+        <p class="eyebrow">Open-source Pomodoro timer &mdash; flexible by design</p>
+        <h1 id="hero-title" translate="no">Ketchup</h1>
+        <p class="hero__lead">
+          Work and break share one cycle. Switch phases whenever your brain needs
+          it&mdash;without losing the budget.
+        </p>
+        <div class="hero__actions" aria-label="Primary actions">
+          <a class="button button--primary" href="#download" data-primary-download>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3" />
+            </svg>
+            <span>Choose Download</span>
+          </a>
+          <a class="button button--quiet" href="https://github.com/Rench321/ketchup-timer">
+            <svg class="icon icon--github" viewBox="-1 -1 26 26" aria-hidden="true">
+              <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.9.1 3.2.8.9 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.5A12 12 0 0 0 12 .5Z" />
+            </svg>
+            <span>View Source</span>
+          </a>
+        </div>
+
+        <div class="hero__shot">
           <img
             class="product-shot"
             src="./assets/demo.gif"
             alt="Animated preview of Ketchup's compact dual-ring Pomodoro timer interface."
-            width="320"
-            height="400"
+            width="560"
             loading="eager"
             decoding="async"
             fetchpriority="high"
           />
-          <div class="timer-orbit" aria-hidden="true">
-            <span class="timer-orbit__work"></span>
-            <span class="timer-orbit__break"></span>
-          </div>
-        </div>
-
-        <div class="hero__copy">
-          <p class="eyebrow">Open-source desktop timer for people who renegotiate time mid-session.</p>
-          <h1 id="hero-title">Ketchup</h1>
-          <p class="hero__lead">
-            A compact Pomodoro timer where work and break time share one cycle. Switch phases whenever
-            your brain needs it, without losing the budget.
-          </p>
-          <div class="hero__actions" aria-label="Primary actions">
-            <a class="button button--primary" href="#download" data-primary-download>
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3" />
-              </svg>
-              <span>Choose Download</span>
-            </a>
-            <a class="button button--quiet" href="https://github.com/Rench321/ketchup-timer">
-              <svg class="icon icon--github" viewBox="-1 -1 26 26" aria-hidden="true">
-                <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.9.1 3.2.8.9 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.5A12 12 0 0 0 12 .5Z" />
-              </svg>
-              <span>View Source</span>
-            </a>
-          </div>
         </div>
 
         <div class="hero__ticker" aria-label="Project highlights">
           <span>Dual-budget timer</span>
-          <span>Tauri v2</span>
-          <span>React 19</span>
+          <span translate="no">Tauri v2</span>
+          <span translate="no">React 19</span>
           <span>MIT licensed</span>
         </div>
       </section>
 
-      <section id="mechanic" class="mechanic section-band" aria-labelledby="mechanic-title">
+      <section id="mechanic" class="mechanic section-band reveal" aria-labelledby="mechanic-title">
         <div class="section-copy">
           <p class="section-kicker">The unusual bit</p>
           <h2 id="mechanic-title">One cycle. Two budgets. No ceremony.</h2>
+          <p style="margin-top: 16px; color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin-bottom: 0;">
+            Every Pomodoro cycle allocates both a work budget and a break budget up front.
+            You decide when to switch. Each side counts down independently.
+            When both run out, the cycle completes.
+          </p>
         </div>
-        <div class="budget-board" aria-label="Dual-budget cycle diagram">
-          <div class="budget-track budget-track--work">
+        <div class="budget-demo" aria-label="Interactive dual-budget cycle demo">
+          <div class="budget-track budget-track--work is-active" id="demo-work">
             <span class="budget-track__label">Work budget</span>
-            <span class="budget-track__fill"></span>
-            <span class="budget-track__time">25 min</span>
+            <div class="budget-track__bar">
+              <span class="budget-track__fill" id="demo-work-fill" style="width: 72%"></span>
+            </div>
+            <span class="budget-track__time" id="demo-work-time">18:04</span>
           </div>
-          <div class="phase-toggle" role="img" aria-label="Preview of switching between work and break budgets">
-            <span class="phase-toggle__line"></span>
-            <span class="phase-toggle__dot"></span>
-          </div>
-          <div class="budget-track budget-track--break">
+          <button
+            class="phase-switch"
+            id="demo-switch"
+            aria-label="Currently in work phase. Click to switch to break."
+          >
+            <span class="phase-switch__label" id="demo-switch-label">Switch to Break</span>
+            <div class="phase-switch__rail" id="demo-rail">
+              <span class="phase-switch__thumb" id="demo-thumb"></span>
+            </div>
+          </button>
+          <div class="budget-track budget-track--break" id="demo-break">
             <span class="budget-track__label">Break budget</span>
-            <span class="budget-track__fill"></span>
-            <span class="budget-track__time">5 min</span>
+            <div class="budget-track__bar">
+              <span class="budget-track__fill" id="demo-break-fill" style="width: 38%"></span>
+            </div>
+            <span class="budget-track__time" id="demo-break-time">2:47</span>
           </div>
         </div>
       </section>
 
-      <section class="features" aria-labelledby="features-title">
+      <section class="features reveal" aria-labelledby="features-title">
         <div class="section-copy">
           <p class="section-kicker">Built like a tiny tool</p>
           <h2 id="features-title">Everything stays local, focused, and easy to hack.</h2>
@@ -228,8 +234,8 @@
                 <path d="M7 7h10m0 0-3-3m3 3-3 3M17 17H7m0 0 3-3m-3 3 3 3" />
               </svg>
             </span>
-            <h3>Free phase switching</h3>
-            <p>Jump between work and break at any point while each side keeps its remaining budget.</p>
+            <h3>Free Phase Switching</h3>
+            <p>Jump between work and break at any point. Each side keeps its remaining budget intact.</p>
           </article>
           <article class="feature-card">
             <span class="feature-card__icon" aria-hidden="true">
@@ -237,8 +243,8 @@
                 <path d="M12 4a8 8 0 1 1-6.9 4M12 8a4 4 0 1 1-3.5 2" />
               </svg>
             </span>
-            <h3>Dual progress rings</h3>
-            <p>The active phase and the waiting phase are visible together, so the cycle is always readable.</p>
+            <h3>Dual Progress Rings</h3>
+            <p>Active and waiting phases are both visible at once, so the cycle is always readable at a glance.</p>
           </article>
           <article class="feature-card">
             <span class="feature-card__icon" aria-hidden="true">
@@ -246,8 +252,8 @@
                 <path d="M5 9v6h4l5 4V5L9 9H5Zm12 1a3 3 0 0 1 0 4m2-7a7 7 0 0 1 0 10" />
               </svg>
             </span>
-            <h3>No notification permissions</h3>
-            <p>Phase changes use Web Audio tones instead of OS notifications or background services.</p>
+            <h3>No Notification Permissions</h3>
+            <p>Phase changes fire Web Audio tones instead of OS notifications or background services.</p>
           </article>
           <article class="feature-card">
             <span class="feature-card__icon" aria-hidden="true">
@@ -255,13 +261,13 @@
                 <path d="M8 9 4 12l4 3m8-6 4 3-4 3M13 5l-2 14" />
               </svg>
             </span>
-            <h3>Frontend-owned logic</h3>
-            <p>The timer state machine lives in React, keeping the Rust side intentionally minimal.</p>
+            <h3>Frontend-Owned Logic</h3>
+            <p>The timer state machine lives in React. Rust only hosts Tauri plugins&mdash;nothing more.</p>
           </article>
         </div>
       </section>
 
-      <section class="answers section-band" aria-labelledby="answers-title">
+      <section class="answers section-band reveal" aria-labelledby="answers-title">
         <div class="section-copy">
           <p class="section-kicker">Quick answers</p>
           <h2 id="answers-title">Ketchup in plain facts.</h2>
@@ -269,29 +275,29 @@
         <dl class="answer-list">
           <div>
             <dt>What is Ketchup?</dt>
-            <dd>An open-source desktop Pomodoro timer built with Tauri v2, React, and TypeScript.</dd>
+            <dd>An open-source desktop Pomodoro timer built with Tauri&nbsp;v2, React, and TypeScript.</dd>
           </div>
           <div>
             <dt>What makes it different?</dt>
-            <dd>Each cycle has both a work budget and a break budget, and you can switch between them freely.</dd>
+            <dd>Each cycle has both a work budget and a break budget, and you can switch between them freely at any moment.</dd>
           </div>
           <div>
             <dt>Where does the timer logic live?</dt>
-            <dd>The state machine, persistence, and UI live in the React frontend; Rust only hosts Tauri plugins.</dd>
+            <dd>The state machine, persistence, and UI live in the React frontend. Rust only hosts Tauri plugins.</dd>
           </div>
           <div>
             <dt>How is it distributed?</dt>
-            <dd>The landing page links directly to the latest Windows, macOS, and Linux release assets.</dd>
+            <dd>The landing page links directly to the latest Windows, macOS, and Linux release assets&mdash;no GitHub account needed.</dd>
           </div>
         </dl>
       </section>
 
-      <section id="download" class="download section-band" aria-labelledby="download-title">
+      <section id="download" class="download section-band reveal" aria-labelledby="download-title">
         <div class="section-copy">
           <p class="section-kicker">Direct downloads</p>
-          <h2 id="download-title">Get the installer that matches your desktop.</h2>
+          <h2 id="download-title">Get the installer for your desktop.</h2>
           <p class="download-intro">
-            No GitHub account is needed. These links download the latest app bundles published by the release workflow.
+            No GitHub account needed. These links point to the latest release assets published by the release workflow.
           </p>
         </div>
         <div class="download-actions" aria-label="Download links">
@@ -338,7 +344,7 @@
             </span>
             <span>macOS Apple Silicon</span>
             <strong>Download DMG</strong>
-            <small>M1, M2, M3, and newer</small>
+            <small>M1, M2, M3 and newer</small>
           </a>
           <a
             class="download-link"
@@ -418,8 +424,8 @@
     </main>
 
     <footer class="site-footer">
-      <span>Ketchup is MIT licensed.</span>
-      <span>Static site deploys to GitHub Pages with GitHub Actions.</span>
+      <span><span translate="no">Ketchup</span> is MIT&nbsp;licensed.</span>
+      <span>Static site hosted on GitHub&nbsp;Pages.</span>
     </footer>
 
     <script src="./script.js" type="module"></script>
