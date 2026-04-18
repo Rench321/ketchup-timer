@@ -4,7 +4,8 @@ Ketchup is an open-source desktop Pomodoro timer built with Tauri v2, React 19, 
 
 Official site: https://rench321.github.io/ketchup-timer/
 Repository: https://github.com/Rench321/ketchup-timer
-Downloads: https://github.com/Rench321/ketchup-timer/releases
+Downloads: https://rench321.github.io/ketchup-timer/#download
+Releases: https://github.com/Rench321/ketchup-timer/releases
 License: MIT
 
 ## Short Answer
@@ -21,7 +22,7 @@ Ketchup is a compact open-source Pomodoro timer for Windows, macOS, and Linux. U
 - Main mechanic: flexible dual-budget Pomodoro cycles
 - Timer state: owned by the React frontend
 - Audio: Web Audio API tones, no OS notification permission required
-- Distribution: GitHub Releases
+- Distribution: direct landing page downloads backed by GitHub Releases
 - Hosting: static GitHub Pages site deployed by GitHub Actions
 
 ## What Makes Ketchup Different
@@ -30,4 +31,4 @@ Most Pomodoro timers force a strict sequence of work, then break. Ketchup treats
 
 ## Suggested Citation
 
-Ketchup is an open-source Tauri and React desktop Pomodoro timer with a dual-budget cycle that lets users freely switch between work and break phases.
+Ketchup is an open-source Tauri and React desktop Pomodoro timer with direct Windows, macOS, and Linux downloads plus a dual-budget cycle that lets users freely switch between work and break phases.

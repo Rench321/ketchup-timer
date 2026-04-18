@@ -10,6 +10,7 @@
   --mustard: #f7b538;
   --plum: #7b2cbf;
   --line: rgba(36, 31, 33, 0.14);
+  --focus: rgba(123, 44, 191, 0.34);
   --shadow: 0 22px 70px rgba(36, 31, 33, 0.18);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
@@ -23,15 +24,18 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background:
     linear-gradient(90deg, rgba(36, 31, 33, 0.045) 1px, transparent 1px) 0 0 / 56px 56px,
     linear-gradient(180deg, #fffaf0 0%, #fef4dc 42%, #fffef8 100%);
+  -webkit-tap-highlight-color: rgba(230, 57, 70, 0.18);
 }
 
 body,
@@ -42,6 +46,7 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+  touch-action: manipulation;
 }
 
 img {
@@ -51,6 +56,26 @@ img {
 
 button {
   border: 0;
+}
+
+[id] {
+  scroll-margin-top: 84px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  flex: 0 0 auto;
+}
+
+.icon--github {
+  fill: currentColor;
+  stroke: none;
 }
 
 .skip-link {
@@ -113,12 +138,14 @@ button {
 .nav-links a:hover,
 .nav-links a:focus-visible {
   background: rgba(230, 57, 70, 0.1);
-  outline: none;
+  box-shadow: 0 0 0 3px var(--focus);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .hero {
   position: relative;
-  min-height: 86svh;
+  min-height: min(86svh, 780px);
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -144,6 +171,7 @@ button {
   overflow: hidden;
   transform: translate3d(var(--tilt-x, 0), var(--tilt-y, 0), 0);
   transition: transform 0.18s ease-out;
+  will-change: transform;
 }
 
 .budget-wall {
@@ -214,7 +242,8 @@ button {
 }
 
 .hero__copy {
-  max-width: 660px;
+  width: min(660px, 100%);
+  min-width: 0;
   margin-top: 16px;
 }
 
@@ -241,6 +270,7 @@ h1 {
   font-size: 92px;
   line-height: 0.88;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .hero__lead {
@@ -249,6 +279,11 @@ h1 {
   color: var(--ink-soft);
   font-size: 22px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.eyebrow {
+  overflow-wrap: anywhere;
 }
 
 .hero__actions,
@@ -262,15 +297,18 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
   min-height: 48px;
   border-radius: 7px;
   padding: 0 18px;
   font-weight: 900;
   box-shadow: 0 10px 24px rgba(36, 31, 33, 0.12);
-}
-
-.button span {
-  margin-right: 9px;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .button--primary {
@@ -288,7 +326,11 @@ h1 {
 .download-link:hover,
 .download-link:focus-visible {
   transform: translateY(-2px);
-  outline: none;
+  box-shadow:
+    0 14px 32px rgba(36, 31, 33, 0.14),
+    0 0 0 3px var(--focus);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .hero__ticker {
@@ -330,6 +372,7 @@ h2 {
   font-size: 44px;
   line-height: 1.05;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .mechanic {
@@ -400,7 +443,6 @@ h2 {
   border-radius: 50%;
   background: var(--ink);
   color: white;
-  cursor: default;
 }
 
 .phase-toggle__line {
@@ -448,7 +490,11 @@ h2 {
   border-radius: 50%;
   background: var(--ink);
   color: white;
-  font-weight: 900;
+}
+
+.feature-card__icon .icon {
+  width: 22px;
+  height: 22px;
 }
 
 .feature-card h3 {
@@ -512,32 +558,67 @@ h2 {
 
 .download-actions {
   margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 
 .download-link {
-  min-width: 178px;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  min-height: 202px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: white;
   padding: 18px;
   box-shadow: 0 10px 24px rgba(36, 31, 33, 0.08);
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
 }
 
-.download-link span,
+.download-link__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 7px;
+  background: rgba(36, 31, 33, 0.08);
+  color: var(--ink);
+}
+
+.download-link > span:not(.download-link__icon),
 .download-link strong {
   display: block;
 }
 
-.download-link span {
+.download-link > span:not(.download-link__icon) {
   color: var(--ink-soft);
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .download-link strong {
-  margin-top: 8px;
-  font-size: 24px;
+  align-self: end;
+  margin-top: 6px;
+  font-size: 22px;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.download-link small {
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.download-link--preferred {
+  border-color: rgba(230, 57, 70, 0.36);
+  background: #fff8f1;
 }
 
 .download-link--source {
@@ -545,8 +626,30 @@ h2 {
   color: white;
 }
 
-.download-link--source span {
+.download-link--source .download-link__icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.download-link--source > span:not(.download-link__icon),
+.download-link--source small {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.download-intro,
+.download-note {
+  max-width: 700px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.download-intro {
+  margin-bottom: 22px;
+}
+
+.download-note {
+  margin: 18px 0 0;
+  font-size: 14px;
 }
 
 .site-footer {
@@ -584,9 +687,11 @@ h2 {
 
 @media (max-width: 980px) {
   .hero {
+    flex-direction: column;
     align-items: flex-start;
-    min-height: 88svh;
+    min-height: auto;
     padding-top: 100px;
+    padding-bottom: 0;
   }
 
   h1 {
@@ -597,22 +702,65 @@ h2 {
     font-size: 19px;
   }
 
+  .hero__copy {
+    order: 1;
+  }
+
+  .hero__media {
+    position: relative;
+    inset: auto;
+    order: 2;
+    z-index: 0;
+    width: min(380px, 100%);
+    margin: 30px auto 28px;
+    overflow: visible;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .budget-wall {
+    top: 22px;
+    right: auto;
+    left: 50%;
+    z-index: -1;
+    width: min(560px, 122vw);
+    min-width: 0;
+    transform: translateX(-50%) rotate(-8deg);
+    opacity: 0.58;
+  }
+
   .product-shot {
-    right: 5vw;
-    bottom: 74px;
-    width: 230px;
-    opacity: 0.72;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(320px, 78vw);
+    height: auto;
+    margin: 0 auto;
+    opacity: 1;
+    transform: none;
   }
 
   .timer-orbit {
-    right: -80px;
-    bottom: 60px;
-    width: 360px;
+    right: auto;
+    bottom: 50%;
+    left: 50%;
+    z-index: -1;
+    width: min(380px, 94vw);
+    transform: translate(-50%, 50%) rotate(-18deg);
+  }
+
+  .hero__ticker {
+    position: static;
+    order: 3;
+    width: calc(100% + 14vw);
+    margin: 12px -7vw 0;
   }
 
   .mechanic,
   .feature-grid,
-  .answer-list {
+  .answer-list,
+  .download-actions {
     grid-template-columns: 1fr;
   }
 
@@ -636,8 +784,14 @@ h2 {
   }
 
   .hero {
-    min-height: 90svh;
-    padding: 88px 20px 78px;
+    display: flex;
+    min-height: auto;
+    padding: 88px 20px 0;
+  }
+
+  .hero__copy {
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
   }
 
   h1 {
@@ -653,6 +807,11 @@ h2 {
     font-size: 12px;
   }
 
+  .eyebrow,
+  .hero__lead {
+    max-width: min(100%, 310px);
+  }
+
   .hero__lead {
     margin-bottom: 20px;
     font-size: 17px;
@@ -662,20 +821,29 @@ h2 {
     width: 100%;
   }
 
+  .hero__media {
+    width: min(320px, 100%);
+    margin: 24px auto 26px;
+  }
+
+  .budget-wall {
+    top: 18px;
+    width: 138vw;
+    opacity: 0.5;
+  }
+
   .product-shot {
-    right: -26px;
-    bottom: 68px;
-    width: 176px;
+    width: min(240px, 72vw);
   }
 
   .timer-orbit {
-    right: -138px;
-    bottom: 46px;
-    width: 300px;
+    width: min(310px, 86vw);
   }
 
   .hero__ticker {
     grid-template-columns: repeat(2, 1fr);
+    width: calc(100% + 40px);
+    margin: 0 -20px;
   }
 
   .hero__ticker span {

@@ -24,15 +24,26 @@ jobs:
           - name: macOS Apple Silicon
             platform: macos-latest
             args: --target aarch64-apple-darwin
+            stable_assets: |
+              src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/*.dmg=>Ketchup-macOS-Apple-Silicon.dmg
           - name: macOS Intel
             platform: macos-latest
             args: --target x86_64-apple-darwin
+            stable_assets: |
+              src-tauri/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg=>Ketchup-macOS-Intel.dmg
           - name: Linux x64
             platform: ubuntu-22.04
             args: ""
+            stable_assets: |
+              src-tauri/target/release/bundle/appimage/*.AppImage=>Ketchup-Linux-x64.AppImage
+              src-tauri/target/release/bundle/deb/*.deb=>Ketchup-Linux-x64.deb
+              src-tauri/target/release/bundle/rpm/*.rpm=>Ketchup-Linux-x64.rpm
           - name: Windows x64
             platform: windows-latest
             args: ""
+            stable_assets: |
+              src-tauri/target/release/bundle/nsis/*.exe=>Ketchup-Windows-x64-setup.exe
+              src-tauri/target/release/bundle/msi/*.msi=>Ketchup-Windows-x64.msi
 
     steps:
       - name: Checkout
@@ -74,3 +85,29 @@ jobs:
           releaseDraft: false
           prerelease: ${{ contains(github.ref_name, '-') }}
           args: ${{ matrix.args }}
+
+      - name: Upload stable download aliases
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STABLE_ASSETS: ${{ matrix.stable_assets }}
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r mapping; do
+            if [ -z "$mapping" ]; then
+              continue
+            fi
+
+            source_pattern="${mapping%%=>*}"
+            stable_name="${mapping##*=>}"
+            matches=( $source_pattern )
+
+            if [ ! -e "${matches[0]}" ]; then
+              echo "No bundle found for ${source_pattern}"
+              continue
+            fi
+
+            cp "${matches[0]}" "${RUNNER_TEMP}/${stable_name}"
+            gh release upload "${GITHUB_REF_NAME}" "${RUNNER_TEMP}/${stable_name}" --clobber
+          done <<< "$STABLE_ASSETS"
