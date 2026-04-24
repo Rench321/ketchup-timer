@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 import './App.css';
 import { TimerConfig, DEFAULT_CONFIGS } from './utils/types';
 import {
@@ -45,6 +46,17 @@ export default function App() {
     switchPhase,
     reset,
   } = useTimer(selectedConfig);
+
+  useEffect(() => {
+    const title = isRunning
+      ? `Ketchup - ${phase === 'break' ? 'Break' : 'Work'}`
+      : 'Ketchup';
+
+    document.title = title;
+    void getCurrentWindow().setTitle(title).catch((error) => {
+      console.warn('Failed to update window title', error);
+    });
+  }, [isRunning, phase]);
 
   // Track whether cycle has been started (for Switch button enablement)
   const [cycleStarted, setCycleStarted] = useState(false);
